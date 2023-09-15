@@ -1,0 +1,29 @@
+class Solution {
+    public String predictPartyVictory(String s) {
+
+        int n = s.length();
+
+        ArrayDeque<Integer>Rq = new ArrayDeque<>();
+        ArrayDeque<Integer>Dq = new ArrayDeque<>();
+
+        for(int i = 0;i<s.length();i++){
+            char x = s.charAt(i);
+            if(x == 'R'){
+                Rq.add(i);
+            }else{
+                Dq.add(i);
+            }
+        }
+        while((Rq.size() != 0) && (Dq.size() != 0)){
+            int ri = Rq.remove();
+            int di = Dq.remove();
+
+            if(ri < di){
+                Rq.add(ri + n);
+            }else{
+                Dq.add(di + n);
+            }
+        }
+        return Rq.size() > 0?"Radiant":"Dire";
+    }
+}

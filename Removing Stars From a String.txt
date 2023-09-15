@@ -1,0 +1,17 @@
+class Solution {
+    public String removeStars(String s) {
+        Stack<Character>st = new Stack<>();
+        for(char x : s.toCharArray()){
+            if(x == '*'){
+                st.pop();
+            }else{
+                st.push(x);
+            }
+        }
+        String ans = "";
+        while(st.size() > 0){
+            ans = st.pop() + ans; 
+        }
+        return ans;
+    }
+}
